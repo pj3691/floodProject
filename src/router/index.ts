@@ -1,12 +1,18 @@
-import {  createRouter, createWebHashHistory, createWebHistory } from "vue-router"
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import ScenesManage from '@/views/ScenesManage.vue'
+import SceneDetail from '@/views/SceneDetail.vue'
 
 /** 常驻路由 */
 export const constantRoutes = [
   {
     path: '/home',
     name: 'home',
-    component: HomeView
+    component: ScenesManage
+  },
+  {
+    path: '/sceneDetail',
+    name: 'sceneDetail',
+    component: SceneDetail
   }
 ]
 

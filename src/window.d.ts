@@ -3,7 +3,8 @@ import CesiumViewe from "./views/cesiumInit/cesium-init"
 
 declare global {
 	interface Window {
-		cesiumInstance: CesiumViewe
+		cesiumInstance: CesiumViewe,
+		sceneId:number
 	}
 }
 

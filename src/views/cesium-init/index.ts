@@ -69,7 +69,7 @@ export default class cesiumViewer {
     this.viewer.resolutionScale = window.devicePixelRatio
     this.viewer.scene.postProcessStages.fxaa.enabled = true
     // 地形深度检测
-    this.viewer.scene.globe.depthTestAgainstTerrain = true
+    this.viewer.scene.globe.depthTestAgainstTerrain = false
     // 取消双击追踪事件
     // this.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK)
     // 左键点击事件取消
@@ -148,4 +148,3 @@ export default class cesiumViewer {
   // 	return dis
   // }
 }
-
