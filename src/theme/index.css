@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  overflow: hidden;
+}
+
+/* cesium文字消除 */
+.cesium-viewer-bottom {
+  display: none !important;
+}
+
+.cesium-viewer {
+  font-family: sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px !important;
+  border-style: solid;
+  border-width: 1px;
+  border-color: aqua;
+}
+
+/* 距离插件位置 */
+.distance-legend {
+  top: 50px;
+  right: -20px;
+}
+
+/* 禁止选中文字 */
+.ban-select-font {
+  /* 火狐 */
+  -moz-user-select: none;
+  /* webkit浏览器 */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.el-table {
+  background: transparent !important;
+}
+.el-table th {
+  background: transparent !important;
+  color: #00fff2;
+}
+.el-table tr {
+  background: transparent !important;
+  color: #20f4ff;
+}
+.el-table_expanded-cell {
+  background: transparent !important;
+}
+.el-table__body tr:hover > td {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.el-table__body tbody > .current-row {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+.el-table__body tr.current-row > td.el-table__cell {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+.el-table__inner-wrapper::before {
+  background: transparent !important;
+}
+.el-table-fixed-column--right {
+  background: transparent !important;
+}
+.el-table__header-wrapper tr th.el-table-fixed-column--right {
+  background: transparent !important;
+}
+
+/* 弹窗上部按钮位置设置 */
+.btn-con {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px;
+}
+
+@font-face {
+  font-family: 'menuFont';
+  src: url('/173切图/菜单/FZZDHJW.TTF');
+}
+
+@font-face {
+  font-family: 'cardFont';
+  src: url('/173切图/菜单/优设标题黑-2.ttf');
+}

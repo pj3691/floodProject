@@ -3,7 +3,6 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <!-- <Header/> -->
   <el-config-provider>
     <RouterView />
   </el-config-provider>
@@ -15,5 +14,9 @@ import { RouterView } from 'vue-router'
 }
 * {
   overflow: visible;
+}
+*::selection {
+  background: none;
+  color: inherit;
 }
 </style>

@@ -4,14 +4,14 @@ import { onMounted } from 'vue'
 import CesiumViewer from './index'
 
 onMounted(() => {
-  window.cesiumInstance = new CesiumViewer('cesiumContainer')
+  window.cesiumInstance = new CesiumViewer('cesium-box')
 })
 
 </script>
 
 <template>
   <!-- <EleTable/> -->
-  <div id="cesiumContainer"></div>
+  <div id="cesium-box"></div>
   <!-- <div id="sun">
     <p style="display: inline">区域最大淹没高度(米):</p>
     <input type="text" value="150" id="maxHeight" />
@@ -22,13 +22,3 @@ onMounted(() => {
   </div> -->
 </template>
 
-<style scoped>
-#cesiumContainer {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #000000;
-}
-</style>

@@ -1,0 +1,204 @@
+.dashboard_main {
+  //background: url('@/assets/dashboard/六边形@1x.png') no-repeat center center, linear-gradient(89.77deg, rgba(11,17,29,1) 0.1%,rgba(6,75,130,1) 51%,rgba(11,17,29,1) 99.9%)  ;
+  background: linear-gradient(89.77deg, rgba(11, 17, 29, 1) 0.1%, rgb(4, 58, 101) 51%, rgba(11, 17, 29, 1) 99.9%);
+  background-size: 100vw 80vh;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  min-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+  .dashboard_background {
+    width: 100%;
+    height: 80vh;
+    background: url('@/assets/dashboard/六边形@1x.png') no-repeat center center;
+    //background-size: cover;
+    background-size: 100vw 80vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
+  .dashDo {
+    width: 25vw;
+    height: 47vh;
+    background: url('@/assets/dashboard/动态气泡 Copy 1@1x.png') no-repeat center center;
+    background-size: contain;
+    z-index: 0;
+    position: absolute;
+    top: 9vh;
+  }
+  .footerDt {
+    z-index: 1;
+    position: absolute;
+    bottom: 3%;
+    left: 2%;
+    height: 4.2vh;
+    width: 14vw;
+    .footerDt1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4.2vh;
+      height: 4.2vh;
+      background: url('@/assets/dashboard/seelightT.png') no-repeat center center;
+      background-size: contain;
+    }
+    .footerDt2 {
+      position: absolute;
+      left: 6vh;
+      top: 0;
+      width: 4.2vh;
+      height: 4.2vh;
+      background: url('@/assets/dashboard/seeodT.png') no-repeat center center;
+      background-size: contain;
+    }
+    .footerDt3 {
+      position: absolute;
+      left: 12vh;
+      top: 1vh;
+      width: 15vh;
+      height: 1.8vh;
+      line-height: 1.7vh;
+      color: rgb(250, 249, 249);
+      font-size: 1.7vh;
+      text-align: center;
+      font-family: SourceHanSansSC-regular;
+    }
+  }
+  .mainT {
+    width: 100%;
+    max-width: 100vw;
+    position: absolute;
+    top: 12vh;
+    height: 85vh;
+    z-index: 3;
+    .centerT {
+      width: 10vw;
+      height: 20vh;
+      position: absolute;
+      top: 28vh;
+      left: 44.9vw;
+      line-height: 11vh;
+      color: rgba(255, 255, 255, 1);
+      font-size: 2.9vw;
+      text-align: center;
+      font-family: YSBiaoTiHei-regular;
+      font-weight: bold; /* 设置字体加粗 */
+      cursor: pointer;
+    }
+    .itemLR {
+      margin-bottom: 2.5vw;
+      display: flex;
+      justify-content: space-between;
+      .pic {
+        width: 25vw;
+        height: 26vh;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .title {
+          width: 41%;
+          opacity: 1;
+          font-family: Source Han Sans;
+          font-weight: bold;
+          font-size: 1.45vw;
+          line-height: normal;
+          text-align: center;
+          cursor: pointer;
+          background: linear-gradient(180deg, #7fa9da 43%, #ffffff 100%);
+          -webkit-background-clip: text;
+          color: transparent;
+        }
+        .titleL {
+          margin-left: 3vw;
+          text-align: left;
+        }
+        .titleR {
+          text-align: left;
+          margin-right: 3vw;
+        }
+        .imgL {
+          width: 1.9vw;
+          height: 4vh;
+          position: absolute;
+          background-size: cover;
+        }
+      }
+      .picBaskL {
+        position: relative;
+        top: -2vh;
+        background: url('@/assets/dashboard/新.png') no-repeat center center;
+        background-size: 25vw 26vh;
+      }
+      .picBaskR {
+        position: relative;
+        top: -2vh;
+        background: url('@/assets/dashboard/新2.png') no-repeat center center;
+        background-size: 25vw 26vh;
+      }
+    }
+    .picFonts {
+      width: 25vw;
+      height: 26vh;
+      cursor: pointer;
+      align-items: center;
+      position: absolute;
+      left: 35vw;
+      //bottom: 1vh;
+      background: url('@/assets/dashboard/新2.png') no-repeat center center;
+      background-size: 25vw 26vh;
+      .titleFonts {
+        width: 41%;
+        height: 50%;
+        font-family: Source Han Sans;
+        font-weight: bold;
+        font-size: 1.45vw;
+        line-height: normal;
+        cursor: pointer;
+        background: linear-gradient(180deg, #7fa9da 43%, #ffffff 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-align: left;
+        margin-right: 5vh;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+      }
+      .imgLFonts {
+        width: 1.9vw;
+        height: 4vh;
+        position: absolute;
+        left: 5vw;
+        top: 11vh;
+        background: url('@/assets/dashboard/if-electron 1.svg') no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+}
+.seeodPic {
+  right: 5vw;
+  top: 11vh;
+  background: url('@/assets/dashboard/if-canoe.svg') no-repeat center center;
+}
+.mechanismOfAction {
+  left: 5vw;
+  top: 11vh;
+  background: url('@/assets/dashboard/if-molecule 1.svg') no-repeat center center;
+}
+.seelightPic {
+  right: 5vw;
+  top: 11vh;
+  background: url('@/assets/dashboard/if-random.svg') no-repeat center center;
+}
+.sql4 {
+  left: 5vw;
+  top: 11vh;
+  background: url('@/assets/dashboard/if-bars 1.svg') no-repeat center center;
+}

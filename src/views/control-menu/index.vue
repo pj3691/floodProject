@@ -36,13 +36,14 @@ onMounted(() => {})
 
 <template>
   <div style="index: 1; position: relative; top: 25%; left: 20%">
-    <el-space wrap size="10">
-      <el-text type="danger">测量工具：</el-text>
+    <el-space wrap size="small">
+      <el-text class="hintText">测量工具：</el-text>
       <el-select
         v-model="targetType"
         :disabled="selectAviliable"
         style="width: 200px"
         placeholder="目标类型"
+        popper-class="selectClass"
       >
         <el-option
           v-for="target in targetList"
@@ -51,12 +52,13 @@ onMounted(() => {})
           :value="target.lable"
         />
       </el-select>
-      <el-text type="danger">标绘工具：</el-text>
+      <el-text class="hintText">标绘工具：</el-text>
       <el-select
         v-model="weatherState"
         :disabled="selectAviliable"
         style="width: 200px"
         placeholder="环境状况"
+        popper-class="selectClass"
       >
         <el-option
           v-for="weather in weatherList"
@@ -69,10 +71,7 @@ onMounted(() => {})
   </div>
 </template>
 
-<style scoped>
-.topMenu {
-  pointer-events: none;
-}
+<style lang="scss" scoped>
 .selectListStyle {
   width: 10vw;
   height: 4vh;
@@ -90,12 +89,13 @@ onMounted(() => {})
     border-width: 0;
     border-radius: 0;
     background-color: transparent !important;
-    background-image: url(/切图/工程管理/divbutton.png);
-  }
-  .hintText {
-    color: #6ac9ff;
+    background-image: url(/173切图/工程管理/divbutton.png);
   }
 }
+:deep(.el-text) {
+  color: #6ac9ff !important;
+}
+
 :deep(.el-select-dropdown__list) {
   background-color: #0d2e73 !important;
   border: #095493 solid 1px;
@@ -152,6 +152,9 @@ onMounted(() => {})
   z-index: -1;
   display: none;
 }
+</style>
+
+<style lang="scss">
 .selectClass {
   .el-select-dropdown__list {
     background-color: #0d2e73 !important;

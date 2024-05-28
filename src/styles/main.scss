@@ -1,0 +1,102 @@
+/* 整个滚动条 */
+::-webkit-scrollbar {
+  width: 8px; /* 水平滚动条的高度、垂直滚动条的宽度 */
+  height: 8px; /* 水平滚动条的高度 */
+}
+
+/* 滚动条轨道 */
+::-webkit-scrollbar-track {
+  background-color: rgba(16, 36, 98, 1); /* 颜色和样式 */
+  border-radius: 4px;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(24, 85, 155, 0.8);
+}
+
+/* 滑块hover效果 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(24, 85, 155, 1);
+}
+body .vxe-modal--wrapper .vxe-modal--box {
+  box-shadow: 0 0 10px 0 rgba(0, 191, 255, 0.9);
+  border: none;
+  background: none;
+  backdrop-filter: blur(5px);
+}
+body .vxe-modal--wrapper .vxe-modal--header {
+  background: rgba(24, 85, 155, 0.8);
+  border-bottom: none;
+  .vxe-modal--header-title {
+    text-align: center;
+    color: #fff;
+  }
+  .vxe-modal--header-right {
+    color: #fff;
+  }
+}
+body .vxe-modal--wrapper .vxe-modal--content {
+  background: rgba(0, 0, 50, 0.3);
+  padding: 0;
+  .modal-content {
+    padding: 10px;
+  }
+  .row {
+    justify-content: center;
+    align-items: center;
+    .name {
+      color: rgba(243, 247, 250, 1);
+      font-size: 18px;
+      text-align: left;
+      font-family: YSBiaoTiHei-regular;
+    }
+    .el-input {
+      .el-input__wrapper {
+        background: url(../src/assets/simulation/group22Copy2@1x.png) center center no-repeat;
+        background-size: 100% 100%;
+        border: none;
+        box-shadow: none;
+        .el-input__inner {
+          color: #fff;
+        }
+      }
+    }
+    .button {
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .confirm {
+      background-color: rgba(34, 136, 255, 1);
+      color: rgba(255, 255, 255, 1);
+      font-size: 14px;
+    }
+    .cancel {
+      background-color: rgba(255, 255, 255, 0);
+      color: rgba(0, 120, 230, 1);
+      font-size: 16px;
+      border: 1px solid rgba(0, 120, 230, 1);
+    }
+  }
+}
+body .vxe-modal--wrapper .vxe-modal--content {
+  background: rgba(0, 0, 50, 0.3);
+  .row {
+    .el-select {
+      .el-select__wrapper {
+        background: url(../src/assets/simulation/group22Copy2@1x.png) center center no-repeat;
+        background-size: 100% 100%;
+        border: none;
+        box-shadow: none;
+        .el-select__placeholder {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

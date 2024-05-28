@@ -184,6 +184,8 @@ onMounted(async () => {
   <div class="container">
     <div>
       <div class="top">
+        <!-- <img src="/切图/菜单/头部 Copy 1@1x.png" alt="" class="topImg" />
+        <div class="menuText">洪水模拟</div> -->
         <!-- 菜单控制列表 -->
         <control-menu />
       </div>
@@ -217,7 +219,21 @@ onMounted(async () => {
     background-color: transparent;
     position: relative;
   }
-
+  .topImg {
+    position: relative;
+    width: 100%;
+    height: 150px;
+  }
+  .menuText {
+    position: relative;
+    left: 39%;
+    top: -137px;
+    width: 26%;
+    height: 46px;
+    font-family: 'menuFont';
+    font-size: 34px;
+    color: #b9dbff;
+  }
   .main {
     width: 100vw;
     height: 86vh;
@@ -244,5 +260,12 @@ onMounted(async () => {
     left: 1%;
     position: relative;
   }
+}
+.cesium-widget,
+.cesium-widget canvas {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  border-radius: 10px !important;
 }
 </style>
