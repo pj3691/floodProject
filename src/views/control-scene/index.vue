@@ -43,7 +43,7 @@ function jump(num: number) {
     class="btn-sceneEdit"
     >场景编辑</el-button
   >
-  <el-button type="primary" style="left: 1%" @click="jump(1)" class="btn-quitEdit">返回</el-button>
+  <!-- <el-button type="primary" style="left: 1%" @click="jump(1)" class="btn-quitEdit">返回</el-button> -->
   <el-button type="primary" v-show="false" @click="quitRun()" class="btn-quitEdit"
     >结束运行</el-button
   >
@@ -73,7 +73,7 @@ function jump(num: number) {
 }
 .btn-sceneEdit {
   position: relative;
-  left: 29vw;
+  left: 33vw;
   top: 2vh;
   width: 10vw;
   height: 5vh;
@@ -89,7 +89,7 @@ function jump(num: number) {
 
 .btn-sceneRun {
   position: relative;
-  left: 29vw;
+  left: 34vw;
   top: 2vh;
   width: 10vw;
   height: 5vh;
@@ -102,7 +102,7 @@ function jump(num: number) {
 
 .btn-router {
   position: relative;
-  left: 29vw;
+  left: 35vw;
   top: 2vh;
   width: 10vw;
   height: 5vh;

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { onMounted } from 'vue'
 const data1 = ''
 const data2 = [
   {
@@ -144,7 +145,7 @@ input {
 .infoTable {
   position: relative;
   top: -69vh;
-  left: 1.5vw;
+  left: 2.5vw;
   font-size: var(--vxe-font-size);
   color: var(--vxe-font-color);
   font-family: var(--vxe-font-family);

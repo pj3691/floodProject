@@ -1,8 +1,8 @@
-import * as Cesium from "cesium";
+import * as Cesium from 'cesium'
 
 //雨雪天气加载
 export async function weatherControl(weatherState: any) {
-    const Rain = `
+  const Rain = `
   uniform sampler2D colorTexture; //输入的场景渲染照片
   in vec2 v_textureCoordinates;
   
@@ -28,7 +28,7 @@ export async function weatherControl(weatherState: any) {
     out_FragColor = mix(texture(colorTexture, v_textureCoordinates), vec4(c, 1), 0.5); //将雨和三维场景融合
   }
   `
-    const Snow = `
+  const Snow = `
   uniform sampler2D colorTexture; //输入的场景渲染照片
   in vec2 v_textureCoordinates;
   
@@ -67,23 +67,23 @@ export async function weatherControl(weatherState: any) {
     out_FragColor = mix(texture(colorTexture, v_textureCoordinates), vec4(finalColor, 1), 0.5); //将雪和三维场景融合
   }
   `
-    function createRainStage() {
-      var rain = new Cesium.PostProcessStage({
-        name: 'czm_rain',
-        fragmentShader: Rain
-      })
-      return rain
-    }
-    function createSnowStage() {
-      var snow = new Cesium.PostProcessStage({
-        name: 'czm_snow',
-        fragmentShader: Snow
-      })
-      return snow
-    }
-    var rain = createRainStage()
-    var snow = createSnowStage()
-    var weather = [snow, rain]
-    window.cesiumInstance.viewer.scene.postProcessStages.removeAll()
-    window.cesiumInstance.viewer.scene.postProcessStages.add(weather[weatherState])
+  function createRainStage() {
+    var rain = new Cesium.PostProcessStage({
+      name: 'czm_rain',
+      fragmentShader: Rain
+    })
+    return rain
   }
+  function createSnowStage() {
+    var snow = new Cesium.PostProcessStage({
+      name: 'czm_snow',
+      fragmentShader: Snow
+    })
+    return snow
+  }
+  var rain = createRainStage()
+  var snow = createSnowStage()
+  var weather = [snow, rain]
+  window.cesiumInstance.viewer.scene.postProcessStages.removeAll()
+  window.cesiumInstance.viewer.scene.postProcessStages.add(weather[weatherState])
+}

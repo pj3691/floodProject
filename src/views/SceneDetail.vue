@@ -4,7 +4,8 @@ import CesiumView from '@/views/cesium-init/cesium-init.vue'
 import ControlMenu from '@/views/control-menu/index.vue'
 import ControlScene from '@/views/control-scene/index.vue'
 import InfoTable from '@/views/info-table/index.vue'
-import { onBeforeMount, onMounted, ref, toRef } from 'vue'
+import InfoBox from '@/views/info-box/index.vue'
+import { onBeforeMount, onMounted, ref, toRef, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import proj4 from 'proj4'
 import { weatherControl } from '@/utils/weather'
@@ -70,14 +71,6 @@ const tranformCoordinate = (fromProjection: any, toProjection: any) => {
     }
 }
 
-function handleRightClick(movement: any) {
-  const viewer = window.cesiumInstance.viewer
-  const pickedFeature = viewer.scene.pick(movement.position)
-  if (Cesium.defined(pickedFeature) && pickedFeature.id && pickedFeature.id.properties) {
-    console.log(pickedFeature.id._properties._WIDTH._value)
-  }
-}
-
 //初始化场景
 const loadData = async () => {
   //将3d模型以及geoJson的坐标从香港1980转为wgs84
@@ -101,10 +94,10 @@ const loadData = async () => {
     Cesium.IonImageryProvider.fromAssetId(3954, {}),
     {}
   )
-  const terrainProvider = await Cesium.createWorldTerrainAsync()
   window.cesiumInstance.viewer.imageryLayers.add(imageryLayer)
 
   const viewer = window.cesiumInstance.viewer
+  // const terrainProvider = await Cesium.createWorldTerrainAsync()
   // viewer.terrainProvider = terrainProvider //加载cesium地形
   const coordinates = [
     -123.0744619, 44.0503706, -123.0744619, 44.0543706, -123.0704619, 44.0543706, -123.0704619,
@@ -175,8 +168,6 @@ const loadData = async () => {
 onMounted(async () => {
   loadData()
   // pDrawArrow()
-  // const handler = new Cesium.ScreenSpaceEventHandler(window.cesiumInstance.viewer.scene.canvas)
-  // handler.setInputAction(handleRightClick, Cesium.ScreenSpaceEventType.RIGHT_CLICK)
 })
 </script>
 
@@ -186,6 +177,7 @@ onMounted(async () => {
       <div class="top">
         <!-- <img src="/切图/菜单/头部 Copy 1@1x.png" alt="" class="topImg" />
         <div class="menuText">洪水模拟</div> -->
+
         <!-- 菜单控制列表 -->
         <control-menu />
       </div>
@@ -193,6 +185,7 @@ onMounted(async () => {
         <!-- 地图显示 -->
         <cesium-view />
         <info-table />
+        <info-box />
       </div>
       <div class="footer">
         <!-- 底部场景控制控件 -->
@@ -212,6 +205,20 @@ onMounted(async () => {
   );
   height: 100vh;
   width: 100vw;
+  .title {
+    position: relative;
+    width: 60%;
+    left: 16%;
+    top: 5%;
+    font-size: 15px;
+  }
+  .infoBody {
+    position: relative;
+    width: 60%;
+    left: 16%;
+    top: 18%;
+    font-size: 17px;
+  }
   .top {
     width: 100vw;
     height: 5vh;

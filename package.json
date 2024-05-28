@@ -23,6 +23,7 @@
     "unplugin-vue-components": "^0.27.0",
     "vite-plugin-cesium": "^1.2.22",
     "vue": "^3.4.21",
+    "vue-cesium": "^3.2.8",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

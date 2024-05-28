@@ -6,7 +6,6 @@ import CesiumViewer from './index'
 onMounted(() => {
   window.cesiumInstance = new CesiumViewer('cesium-box')
 })
-
 </script>
 
 <template>
@@ -21,4 +20,3 @@ onMounted(() => {
     <input type="text" value="1" id="floodSpeed" />
   </div> -->
 </template>
-

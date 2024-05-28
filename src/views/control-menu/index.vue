@@ -2,18 +2,36 @@
 import { toRefs, ref, watch, onMounted } from 'vue'
 import { selectAviliable } from './index'
 import * as Cesium from 'cesium'
-
+import { plotInstance } from '@/utils/plot'
 //下拉菜单选项
 const targetList = [
   {
     value: 0,
-    lable: '距离测量'
+    lable: '距离测量',
+    func: () => plotInstance('DistanceMeasure')
   },
   {
     value: 1,
-    lable: '面积测量'
+    lable: '面积测量',
+    func: () => plotInstance('AreaMeasure')
+  },
+  {
+    value: 2,
+    lable: '角度测量',
+    func: () => plotInstance('AngleMeasure')
+  },
+  {
+    value: 3,
+    lable: '三角测量',
+    func: () => plotInstance('TriangleMeasure')
+  },
+  {
+    value: 4,
+    lable: '通视线',
+    func: () => plotInstance('SightLine')
   }
 ]
+
 const weatherList = [
   {
     value: 0,
@@ -28,8 +46,8 @@ const weatherList = [
     lable: '面标绘'
   }
 ]
-const targetType = ref('无人机')
-const weatherState = ref('晴')
+const targetType = ref('请选择测量工具')
+const weatherState = ref('请选择标绘工具')
 
 onMounted(() => {})
 </script>
@@ -42,7 +60,7 @@ onMounted(() => {})
         v-model="targetType"
         :disabled="selectAviliable"
         style="width: 200px"
-        placeholder="目标类型"
+        placeholder="请选择测量工具"
         popper-class="selectClass"
       >
         <el-option
@@ -50,6 +68,7 @@ onMounted(() => {})
           :key="target.value"
           :lable="target.lable"
           :value="target.lable"
+          @click="target.func"
         />
       </el-select>
       <el-text class="hintText">标绘工具：</el-text>
@@ -57,7 +76,7 @@ onMounted(() => {})
         v-model="weatherState"
         :disabled="selectAviliable"
         style="width: 200px"
-        placeholder="环境状况"
+        placeholder="请选择标绘工具"
         popper-class="selectClass"
       >
         <el-option

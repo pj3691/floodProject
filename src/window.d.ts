@@ -1,13 +1,12 @@
-import CesiumViewe from "./views/cesiumInit/cesium-init"
-
+import CesiumViewe from './views/cesium-init/index'
 
 declare global {
-	interface Window {
-		cesiumInstance: CesiumViewe,
-		sceneId:number
-	}
+  interface Window {
+    cesiumInstance: CesiumViewe
+    sceneId: number
+  }
 }
 
 // declare interface Window{
-// 	cesiumInstance: CesiumViewer
+// 	cesiumInstances: CesiumViewer
 // }
