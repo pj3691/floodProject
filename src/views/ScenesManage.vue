@@ -20,12 +20,12 @@ let checkValue = new Array(50) //控制某个工程页面是否处于可编辑�
 let { sceneList, typeList } = toRefs(scenesControlStore()) //从store中取出模板列表
 const { addScene } = scenesControlStore() //添加工程到sceneControl的store中（）
 
-// function getScene(data: any) {
-//   findFyMy(data).then((res) => {
-//     console.log(res.data)
-//   })
-//   // getOne(data)
-// }
+function getScene(data: any) {
+  findFyMy(data).then((res) => {
+    console.log(res.data)
+  })
+  // getOne(data)
+}
 
 for (let index = 0; index < checkValue.length; index++) {
   checkValue[index] = ref(true)

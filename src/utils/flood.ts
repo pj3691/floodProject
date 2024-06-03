@@ -1,5 +1,7 @@
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'
+import { weatherControl } from '@/utils/weather'
+
 //绘制的点数组, 选取位置的范围坐标
 let adapCoordi: any = []
 // 多边形区域实体
@@ -48,6 +50,7 @@ export function drawPolygon() {
       createPolygon(floatPoint)
       adapCoordi = floatPoint
     }
+    handle.destroy()
   }, Cesium.ScreenSpaceEventType.RIGHT_CLICK) // LEFT_DOUBLE_CLICK、RIGHT_CLICK
   //移动
   handle.setInputAction(function (movement: any) {
@@ -112,21 +115,23 @@ export function createPolygon(points: any) {
 
 export function clean() {
   const viewer = window.cesiumInstance.viewer
+  window.cesiumInstance.viewer.scene.postProcessStages.removeAll()
+  viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK)
   viewer.entities.removeAll()
 }
 
 //淹没分析
 export function flood() {
   const viewer = window.cesiumInstance.viewer
-  console.log(viewer)
+  weatherControl(1)
   viewer.scene.primitives.remove(area)
   if (!Cesium.defined(adapCoordi)) {
     alert('请先绘制淹没范围')
     return
   }
-  let currentHeight = 0 //parseFloat(document.getElementById('minHeight').value)
-  const maxHeight = 1500 //parseFloat(document.getElementById('maxHeight').value)
-  const times = 2 //parseFloat(document.getElementById('floodSpeed').value)
+  let currentHeight = parseFloat(document.getElementById('minHeight').value)
+  const maxHeight = parseFloat(document.getElementById('maxHeight').value)
+  const times = DparseFloat(document.getElementById('floodSpeed').value)
   const speed = (maxHeight - currentHeight) / times
   //entity方式创建
   const entity = viewer.entities.add({

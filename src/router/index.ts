@@ -5,6 +5,10 @@ import SceneDetail from '@/views/SceneDetail.vue'
 /** 常驻路由 */
 export const constantRoutes = [
   {
+    path: '/',
+    component: ScenesManage
+  },
+  {
     path: '/home',
     name: 'home',
     component: ScenesManage

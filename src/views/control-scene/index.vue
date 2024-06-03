@@ -2,22 +2,31 @@
 import * as Cesium from 'cesium'
 import router from '@/router'
 import { onMounted, ref, reactive } from 'vue'
+import { flood, clean } from '@/utils/flood'
 
 //底部按钮背景图片
 const btnStyle = reactive({
   'background-image': 'url(/切图/工程详情/btn-left.png)'
 })
 
+const ifRun = ref(false)
+
 //点击模拟运算按钮触发
 function sceneSim() {}
 
-function runScene() {}
+function runScene() {
+  flood()
+  ifRun.value = true
+}
 
 //点击场景编辑按钮触发
 function sceneEdit() {}
 
 //点击结束运行按钮触发
-function quitRun() {}
+function quitRun() {
+  clean()
+  ifRun.value = false
+}
 
 //页面跳转
 function jump(num: number) {
@@ -48,7 +57,10 @@ function jump(num: number) {
     >结束运行</el-button
   >
   <el-button type="primary" @click="sceneEdit()" class="btn-sceneRun">模拟运算</el-button>
-  <el-button type="primary" @click="jump(0)" class="btn-router">场景运行</el-button>
+  <el-button v-if="!ifRun" type="primary" @click="runScene()" class="btn-router"
+    >场景运行</el-button
+  >
+  <el-button v-if="ifRun" type="primary" @click="quitRun()" class="btn-router">停止运行</el-button>
 </template>
 
 <style lang="scss" scoped>

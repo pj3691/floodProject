@@ -2,7 +2,7 @@
 import { toRefs, ref, watch, onMounted } from 'vue'
 import { selectAviliable } from './index'
 import * as Cesium from 'cesium'
-import { plotInstance } from '@/utils/plot'
+import { plotInstance, Profile } from '@/utils/plot'
 //下拉菜单选项
 const targetList = [
   {
@@ -29,21 +29,44 @@ const targetList = [
     value: 4,
     lable: '通视线',
     func: () => plotInstance('SightLine')
+  },
+  {
+    value: 5,
+    lable: '剖面分析',
+    func: () => Profile()
   }
 ]
 
 const weatherList = [
   {
-    value: 0,
-    lable: '点标绘'
-  },
-  {
     value: 1,
-    lable: '线标绘'
+    lable: '单箭头',
+    func: () => plotInstance('Arrow1')
   },
   {
     value: 2,
-    lable: '面标绘'
+    lable: '平滑区域',
+    func: () => plotInstance('SplineArea')
+  },
+  {
+    value: 3,
+    lable: '弧面',
+    func: () => plotInstance('CircleArcArea')
+  },
+  {
+    value: 4,
+    lable: '多段箭头',
+    func: () => plotInstance('MultiPartArrow')
+  },
+  {
+    value: 5,
+    lable: '顶点平滑线',
+    func: () => plotInstance('PointSpline')
+  },
+  {
+    value: 6,
+    lable: '红旗',
+    func: () => plotInstance('RedFlag')
   }
 ]
 const targetType = ref('请选择测量工具')
@@ -84,6 +107,7 @@ onMounted(() => {})
           :key="weather.value"
           :lable="weather.lable"
           :value="weather.lable"
+          @click="weather.func"
         />
       </el-select>
     </el-space>

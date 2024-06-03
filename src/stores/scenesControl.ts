@@ -13,26 +13,25 @@ const secneDatas: Array<sceneInfo> = [
     id: 0,
     name: '工程1',
     createTime: '2023-12-24',
-    type: 0,
+    type: 0
   },
   {
     id: 1,
     name: '工程2',
     createTime: '2023-12-25',
-    type: 1,
-
+    type: 1
   },
   {
     id: 2,
     name: '工程3',
     createTime: '2023-12-26',
-    type: 2,
+    type: 2
   },
   {
     id: 3,
     name: '工程4',
     createTime: '2023-12-27',
-    type: 3,
+    type: 3
   }
 ]
 const sceneTypes: Array<any> = [
@@ -53,10 +52,21 @@ const sceneTypes: Array<any> = [
 export const scenesControlStore = defineStore('scenesControl', {
   state: () => ({
     sceneList: secneDatas,
-    typeList: sceneTypes
+    typeList: sceneTypes,
+    pipeIfo: {
+      id: 0,
+      wid: 0,
+      type: 'any'
+    }
   }),
   getters: {},
   actions: {
+    setpipe(id: any, wid: any, type: any) {
+      this.pipeIfo.id = id
+      this.pipeIfo.wid = wid
+      this.pipeIfo.type = type
+    },
+
     addScene(data: string, type: any) {
       const date = new Date()
       const year = date.getFullYear() // 获取当前年份，例如：2021

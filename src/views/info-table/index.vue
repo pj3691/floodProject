@@ -1,7 +1,16 @@
 <script lang="ts" setup>
-import { onMounted } from 'vue'
-const data1 = ''
-const data2 = [
+import { onMounted, ref } from 'vue'
+import { drawPolygon } from '@/utils/flood'
+const data1 = ref("")
+const data4 = ref("")
+const data5 = ref("")
+const data6 = ref("")
+const data7 = ref("")
+const data8 = ref("")
+const data9 = ref("")
+const data10 = ref("")
+const data11 = ref("")
+const data12 = [
   {
     index: 1,
     data: 123,
@@ -18,10 +27,11 @@ const data2 = [
     label: 123
   }
 ]
+const tableShow = ref(true)
 </script>
 
 <template>
-  <div v-show="true" class="infoTable">
+  <div v-show="tableShow" class="infoTable">
     <div class="demoModules">
       <!-- 头部 -->
       <div class="titleDemo">
@@ -32,58 +42,49 @@ const data2 = [
       <!-- 内容 -->
       <div class="centerFirst">
         <div class="messageLeft">
-          <div class="fontName">场景名称</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" readonly />
+          <el-button type="primary" @click="drawPolygon" class="btn-contain"
+            >绘制汇水区范围</el-button
+          >
         </div>
         <div class="messageright">
-          <div class="fontName">步长</div>
+          <div class="fontName">不透水区比例</div>
           <el-input v-model="data1" placeholder="请输入" class="inputOne" />
         </div>
       </div>
       <div class="centerFirst">
         <div class="messageLeft">
-          <div class="fontName">场景名称</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" readonly />
+          <div class="fontName">不透水区曼宁系数</div>
+          <el-input v-model="data4" placeholder="请输入" class="inputOne" />
         </div>
         <div class="messageright">
-          <div class="fontName">步长</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" />
+          <div class="fontName">透水区曼宁系数</div>
+          <el-input v-model="data5" placeholder="请输入" class="inputOne" />
         </div>
       </div>
       <div class="centerFirst">
         <div class="messageLeft">
-          <div class="fontName">场景名称</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" readonly />
+          <div class="fontName">不透水区洼地深度</div>
+          <el-input v-model="data6" placeholder="请输入" class="inputOne" />
         </div>
         <div class="messageright">
-          <div class="fontName">步长</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" />
+          <div class="fontName">透水区洼地深度</div>
+          <el-input v-model="data7" placeholder="请输入" class="inputOne" />
         </div>
       </div>
       <div class="centerFirst">
         <div class="messageLeft">
-          <div class="fontName">场景名称</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" readonly />
+          <div class="fontName">降雨时间（min）</div>
+          <el-input v-model="data8" placeholder="请输入" class="inputOne" />
         </div>
         <div class="messageright">
-          <div class="fontName">步长</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" />
-        </div>
-      </div>
-      <div class="centerFirst">
-        <div class="messageLeft">
-          <div class="fontName">场景名称</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" readonly />
-        </div>
-        <div class="messageright">
-          <div class="fontName">步长</div>
-          <el-input v-model="data1" placeholder="请输入" class="inputOne" />
+          <div class="fontName">雨量(mm)</div>
+          <el-input v-model="data9" placeholder="请输入" class="inputOne" />
         </div>
       </div>
       <!-- 底部 -->
       <div class="tableBottom" v-show="true">
         <el-button type="info" @click="">取消</el-button>
-        <el-button type="primary" @click="">确定</el-button>
+        <el-button type="primary" @click="tableShow = false">确定</el-button>
       </div>
     </div>
   </div>
@@ -285,6 +286,17 @@ input {
   --el-table-tr-bg-color: transparent;
   --el-table-expanded-cell-bg-color: transparent;
   --el-table-fixed-left-column: inset 10px 0 10px -10px transparent;
+}
+.btn-contain {
+  position: relative;
+  left: 10px;
+  top: 10px;
+  width: 100px;
+  height: 32px;
+  border-width: 0;
+  border-radius: 0;
+  background-color: transparent !important;
+  background-image: url(/切图/工程管理/divbutton.png);
 }
 //:deep(.el-table__body-wrapper tr td.el-table-fixed-column--left) {
 //  background-color: #0d142b !important;

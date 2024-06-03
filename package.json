@@ -16,6 +16,7 @@
     "axios": "^1.6.8",
     "cesium": "^1.117.0",
     "cesium-plotting-symbol": "^0.0.86",
+    "echarts": "^5.5.0",
     "element-plus": "^2.7.2",
     "pinia": "^2.1.7",
     "proj4": "^2.11.0",

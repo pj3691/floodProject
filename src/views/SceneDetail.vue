@@ -7,6 +7,7 @@ import InfoTable from '@/views/info-table/index.vue'
 import InfoBox from '@/views/info-box/index.vue'
 import { onBeforeMount, onMounted, ref, toRef, reactive } from 'vue'
 import { useRoute } from 'vue-router'
+import { Pipe_Stormwater } from '@/assets/Pipe_Stormwater.ts'
 import proj4 from 'proj4'
 import { weatherControl } from '@/utils/weather'
 //接收id参数，根据id确定加载的场景
@@ -36,27 +37,27 @@ async function add3DTiles() {
   const boundingSphere = tileset.boundingSphere
   viewer.camera.viewBoundingSphere(boundingSphere, new Cesium.HeadingPitchRange(0, -2.0, 0))
   viewer.camera.lookAtTransform(Cesium.Matrix4.IDENTITY)
-  tileset.style = new Cesium.Cesium3DTileStyle({
-    color: "color('rgba(255,255,255,0.7)')"
-    // 	show: {
-    // 		conditions: [
-    // 			["${level} >= 10", false],
-    // 			["true", true]
-    // 		]
-    // 	}
-  })
+  // tileset.style = new Cesium.Cesium3DTileStyle({
+  //   color: "color('rgba(255,255,255,0.7)')"//设置透明度
+  //   // 	show: {
+  //   // 		conditions: [
+  //   // 			["${level} >= 10", false],
+  //   // 			["true", true]
+  //   // 		]
+  //   // 	}
+  // })
 
-  const offsetHeight = 100
-  // const boundingSphere = tileset.boundingSphere
-  const cartographic = Cesium.Cartographic.fromCartesian(boundingSphere.center)
-  const surface = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 0.0)
-  const offset = Cesium.Cartesian3.fromRadians(
-    cartographic.longitude,
-    cartographic.latitude,
-    offsetHeight
-  )
-  const translation = Cesium.Cartesian3.subtract(offset, surface, new Cesium.Cartesian3())
-  tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation)
+  // const offsetHeight = 100
+  // // const boundingSphere = tileset.boundingSphere
+  // const cartographic = Cesium.Cartographic.fromCartesian(boundingSphere.center)
+  // const surface = Cesium.Cartesian3.fromRadians(cartographic.longitude, cartographic.latitude, 0.0)
+  // const offset = Cesium.Cartesian3.fromRadians(
+  //   cartographic.longitude,
+  //   cartographic.latitude,
+  //   offsetHeight
+  // )
+  // const translation = Cesium.Cartesian3.subtract(offset, surface, new Cesium.Cartesian3())
+  // tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation)
   window.cesiumInstance.viewer.flyTo(tileset)
 }
 
@@ -111,7 +112,7 @@ const loadData = async () => {
     return acc
   }, [])
 
-  // 加载GeoJSON数据
+  // // 加载GeoJSON数据
   // const geoJsonUrl = '/Pipe_Stormwater.json'
   // Cesium.GeoJsonDataSource.load(geoJsonUrl, {
   //   // clampToGround: true
@@ -122,47 +123,59 @@ const loadData = async () => {
   //   window.cesiumInstance.viewer.zoomTo(dataSource)
   //   // dataSource.entities.
   //   const entities = dataSource.entities.values
-  //   for (let i = 0; i < entities.length; i++) {
-  //     const entity = entities[i]
-  //     if (entity.polygon) {
-  //       // 提升多边形高度
-  //       entity.polygon.height = new Cesium.CallbackProperty(function () {
-  //         return 10
-  //       }, false)
-  //     }
-  //     if (entity.polyline) {
-  //       const positions = entity.polyline.positions.getValue(Cesium.JulianDate.now())
-  //       // positions[0].z += 10000
-  //       // positions[1].z += 10000
-  //       const newPositions = positions.map((pos) => {
-  //         const cartographic = Cesium.Cartographic.fromCartesian(pos)
-  //         return Cesium.Cartesian3.fromRadians(
-  //           cartographic.longitude,
-  //           cartographic.latitude,
-  //           cartographic.height + 100
-  //         )
-  //       })
-  //       entity.polyline.positions = newPositions
-  //     }
-  //     if (entity.point) {
-  //       // 提升点的高度
-  //       entity.position = new Cesium.CallbackProperty(function () {
-  //         const position = entity.position.getValue()
-  //         const cartographic = Cesium.Cartographic.fromCartesian(position)
-  //         cartographic.height += 10
-  //         return Cesium.Cartesian3.fromRadians(
-  //           cartographic.longitude,
-  //           cartographic.latitude,
-  //           cartographic.height
-  //         )
-  //       }, false)
-  //     }
-  //   }
+  //   //提升entity高度
+  //   // for (let i = 0; i < entities.length; i++) {
+  //   //   const entity = entities[i]
+  //   //   if (entity.polygon) {
+  //   //     // 提升多边形高度
+  //   //     entity.polygon.height = new Cesium.CallbackProperty(function () {
+  //   //       return 10
+  //   //     }, false)
+  //   //   }
+  //   //   if (entity.polyline) {
+  //   //     const positions = entity.polyline.positions.getValue(Cesium.JulianDate.now())
+  //   //     // positions[0].z += 10000
+  //   //     // positions[1].z += 10000
+  //   //     const newPositions = positions.map((pos) => {
+  //   //       const cartographic = Cesium.Cartographic.fromCartesian(pos)
+  //   //       return Cesium.Cartesian3.fromRadians(
+  //   //         cartographic.longitude,
+  //   //         cartographic.latitude,
+  //   //         cartographic.height + 100
+  //   //       )
+  //   //     })
+  //   //     entity.polyline.positions = newPositions
+  //   //   }
+  //   //   if (entity.point) {
+  //   //     // 提升点的高度
+  //   //     entity.position = new Cesium.CallbackProperty(function () {
+  //   //       const position = entity.position.getValue()
+  //   //       const cartographic = Cesium.Cartographic.fromCartesian(position)
+  //   //       cartographic.height += 10
+  //   //       return Cesium.Cartesian3.fromRadians(
+  //   //         cartographic.longitude,
+  //   //         cartographic.latitude,
+  //   //         cartographic.height
+  //   //       )
+  //   //     }, false)
+  //   //   }
+  //   // }
   // })
   // viewer.scene.globe.depthTestAgainstTerrain = true
 
-  // //加载3dtiles数据
-  // add3DTiles()
+  const geoJsonDataSource = new Cesium.GeoJsonDataSource()
+  geoJsonDataSource
+    .process(Pipe_Stormwater)
+    .then(function (dataSource) {
+      viewer.dataSources.add(dataSource)
+      viewer.flyTo(dataSource)
+    })
+    .catch(function (error) {
+      console.error('Error processing GeoJSON data:', error)
+    })
+
+  //加载3dtiles数据
+  add3DTiles()
 }
 
 onMounted(async () => {
